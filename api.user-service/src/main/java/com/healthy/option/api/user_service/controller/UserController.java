@@ -1,5 +1,6 @@
 package com.healthy.option.api.user_service.controller;
 
+import com.healthy.option.api.user_service.exception.EmailExistException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +13,8 @@ public class UserController {
     }
 
     @GetMapping("/home")
-    public String securedApi() {
-        return "Welcome, you are logged in!";
+    public String securedApi() throws EmailExistException {
+        throw new EmailExistException("This email address is already taken");
     }
 
 
